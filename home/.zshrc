@@ -73,6 +73,12 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/lo
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+if [[ ! -f ~/.prompthost ]]; then
+    export PROMPTHOST=$(hostname)
+else
+    export PROMPTHOST=$(cat ~/.prompthost)
+fi
+
 alias dir='ls -laF'
 
 export WORKON_HOME=~/pyenvs
@@ -85,3 +91,9 @@ export LSCOLORS=ExFxCxDxBxegedabagaced
 # export PS1="[\[$(tput bold)\]\[$(tput setaf 3)\]\u@\h:\[$(tput setaf 6)\]\w\[$(tput sgr0)\]]$ "
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/swilcox/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/swilcox/google-cloud-sdk/completion.zsh.inc'
